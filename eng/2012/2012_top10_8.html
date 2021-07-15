@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" >
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>KAIST 연구성과</title>
+<link rel="stylesheet" href="../../css/common.css" type="text/css" />
+<link rel="stylesheet" href="../../css/font.css" type="text/css" />
+<link rel="stylesheet" href="../../css/mediaelementplayer.css" type="text/css" />
+<script type="text/javascript" src="../../js/mediaelement-and-player.js"></script>
+<script type="text/javascript" src="../../js/common.js" ></script>
+
+
+</head>
+<body>	 
+	<div class="sub">
+		<!--공통상단-->
+		<div class="top">
+			<div class="inner">
+				<div class="tit">
+					<h1><img src="../../img/logo2.png"> KAIST Top 10</h1>
+					<p class="">KAIST RESEARCH ACHIEVEMENTS</p>
+				</div>
+			</div>	
+		</div>
+		<!--//공통상단-->
+		<!--연구성과상세-->
+		<div class="rsh_detail inner sub_cont clearfix">
+			<div class="scroll"> 
+				<!--제목,이름-->
+				<div class="dtl_tit"; style="padding: 0px 0px 0px 55px; text-align: left">
+					<p class="sbj">Kargus: A Software-based High-Speed Intrusion</p>
+					<p class="sbj">Detection System</p>
+					<p class="name">Department of Electrical Engineering<br>KyoungSoo Park and Yung Yi</p>
+				</div>
+				<!--//제목,이름-->
+				<!--내용-->
+				<div class="dtl_cont">
+					<!--요약-->
+					<div class="line">
+						<p class="tit"><span>Summary</span></p>
+						<div class="ctt">
+							<p style="text-align: justify; word-break: keep-all">A network intrusion detection system (NIDS) is a real-time network security monitoring system that detects malicious attacks in the Internet. Existing NIDS tools either show poor performance or require expensive dedicated hardware to operate on high-speed networks, which limits their wide-scale deployment. In our research, we present a low-cost but highly-scalable software-based NIDS using batch- and parallel processing techniques on commodity hardware that harnesses GPUs and multi-core CPUs. Our NIDS prototype delivers world record-breaking performance: 33 Gbps for synthetic packets, 12.5 Gbps even when all packets are malicious, and 25 Gbps for real network traffic.
+							</p>
+						</div>
+					</div>	
+					<!--//요약-->
+					<!--연구내용-->
+					<div class="line mt90"> <!--박스 라인의 경우 mt90(marign-top:90px)-->
+						<p class="tit"><span>R&D Report</span></p>
+						<div class="ctt">
+							<!--비디오-->		
+							<div class="cont_video" style="width:100%;">
+									<video id="player1" width="100%" height="450"  poster="../../img/vod_main.png" preload="none" controls playsinline webkit-playsinline class="">
+										<source src="../../cont/top10/2012/eng_video/2012_08_박경수, 이융_eng_v1.0.mp4" type="video/mp4">
+									</video>
+								</div>							
+							<!--//비디오-->
+							<p style="text-align: justify; word-break: keep-all">We expect that this highly flexible and affordable software-based NIDS can monitor not only the enterprise, campus, or government networks, but also cloud server-farms and LTE backbone networks. Furthermore, the NIDS has high potential for commercialization since it is implemented to be compatible with Snort rule-sets. Technology transfer for Kargus is under active discussion.</p>
+							<p class="mt30"; style="text-align: justify; word-break: keep-all">Malicious network attacks are posing serious threats to the stability of the Internet. These attacks are orchestrated by software programs known as malware that generate email spams, online phishing, and even distributed denial of service (DDoS) attacks. In order to effectively respond to network attacks, there is an urgent need to develop a fast and affordable network intrusion detection systems that can scale well in high-speed networks.</p>
+							<p class="mt30"; style="text-align: justify; word-break: keep-all">Existing network intrusion detection systems (NIDSes) are either built on commodity machines by software or they are developed on dedicated hardware. Software-based NIDS tools are easier to maintain and configure. However, such solutions have traditionally shown sub-par performance when deployed in high-speed networks where network bandwidth exceeds several 10s of gigabits per second. On the other hand, hardware-driven NIDS solutions, such as those built on ASIC boards, scale well but are often too costly to be deployed widely or too rigid to adopt new attack signature matching algorithms.</p>
+							<p class="mt30"; style="text-align: justify; word-break: keep-all">We present a software-based NIDS architecture that adopts batch- and parallel processing techniques that guarantees high flexibility and scalability while limiting the overall cost by utilizing general-purpose hardware. We implement the NIDS on an off-the-shelf server and show a world record-breaking performance with it. Moreover, our NIDS is compatible with Snort rule-sets, the most widely-used open-source attack signatures library.</p>
+							<!--이미지-->
+							<p class="img"; style="text-align: center; word-break: keep-all">
+								<img src="../../cont/top10/2012/r12_v08_1.png">
+								<span class="img_sbj">Figure 1. The workflow of our software-based network intrusion detection system using multi-core CPUs and general-purpose GPUs</span>
+							</p>
+							<!--//이미지-->
+							<p class="mt30"; style="text-align: justify; word-break: keep-all">In the network, data is divided into small pieces, called packets, the unit of transmission. The set of packets belonging to a network communication session is called a flow. A NIDS checks whether packets or flows include specific attack patterns by employing deep packet inspection techniques. The attack patterns may consist of strings, regular expressions or other optional modifiers that have been developed from actual intrusion attempts in the past. These patterns are then managed as a database. In our NIDS, users can add or modify the attack patterns freely.</p>
+							<p class="mt30"; style="text-align: justify; word-break: keep-all">The figure below illustrates how our NIDS works. A network switch or a router copies incoming and outgoing packets, and transfers them to our system. The network interface card (NIC) reads the packets and distributes them over CPU cores via internal NIC hardware queues using Receive Side Scaling (RSS). RSS guarantees that packets are uniformly scattered across several CPU cores. We also adopt the batch processing technique which allows hundreds of packets to be read by each CPU core at once (rather than per-packet read) that amortizes the overall cost of analysis. Each CPU core finally checks for the existence of attack packets. We offload the most computationally-intensive packet analysis tasks, attack string and regular expression matching operations, to Graphics Processing Units (GPUs). GPUs are adept at highly-parallelized computations as they host hundreds of cores that operate independently of each other. The GPU is offloaded a batch of packets that are analyzed simultaneously, which enhances the overall performance of packet analysis. As a result of these enhancements, our NIDS shows 33 Gbps analyzing throughput when tested against normal traffic, and more than 10 Gbps analyzing throughput in the worst case even when whole ingress traffic is malicious (previous software-based NIDSes show only 1~2 Gbps performance in this case).</p>
+							<!--이미지-->
+							<p class="img"; style="text-align: center; word-break: keep-all">
+								<img src="../../cont/top10/2012/r12_v08_2.png">
+								<span class="img_sbj"></span>
+							</p>
+							<!--//이미지-->
+						</div>
+					</div>
+					<!--//연구내용-->					
+					<!--연구비 지원-->
+					<div class="line mt90">
+						<p class="tit"><span>Research Funding</span></p>
+						<div class="ctt">
+							<p style="text-align: justify; word-break: keep-all; font-size:0.75em">130 million won from National Security Research Institute (NSRI) and 100 million won from National Research Foundation of Korea (NRF) Research Results</p>
+						</div> 
+					</div>	
+					<!--//연구비 지원-->					
+					<!--연구실적-->
+					<div class="line mt90">
+						<p class="tit"><span>Research Results</span></p>
+						<div class="ctt">
+							<p style="text-align: justify; word-break: keep-all; font-size:0.75em">- Patents Pending: 1 patent filed in Korea UPaper Publication: 1 paper published at ACM Conference on Computer and Communications Security</p>
+							<p style="text-align: justify; word-break: keep-all; font-size:0.75em">(CCS), 2012: the first ever paper from Korea to be presented in the conference.</p>
+						</div>
+					</div>	
+					<!--//연구실적-->
+					</div>
+				</div>
+				<!--//내용-->
+		</div>	
+		<!--//연구성과상세-->
+		<!--공통하단-->
+		<div class="tail">
+			<div class="inner">
+				<div class="sub_tab">
+					<a href="#none" class="active">Top 10</a>
+					<a href="#none" class="active" >Keywords</a> 
+				</div>
+				<div class="nv">
+					<a href="../../main.html"><img src="../../img/home.png" alt="홈으로"></a>
+					<span><img src="../../img/ar.png" alt=""></span>
+					<a href="sub_top10_2012_list.html">Back</a>
+				</div>	
+			</div>	
+		</div>
+		<!--//공통하단-->
+	</div>
+</body>
+</html>
+
+
